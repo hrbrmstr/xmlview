@@ -4,17 +4,13 @@
 \alias{xml_view}
 \title{XML pretty printer & viewer}
 \usage{
-xml_view(doc, style = "default", width = NULL, height = NULL)
+xml_view(doc, style = "default")
 }
 \arguments{
 \item{doc}{\code{xml2} document, node, nodeset or atomic character vector
 of HTML/XML content}
 
 \item{style}{CSS stylesheet to use (see \code{higlight_styles()})}
-
-\item{width}{width}
-
-\item{height}{height}
 }
 \description{
 This uses \code{vkbeautify} and \code{highlight.js} to format and
@@ -22,7 +18,16 @@ This uses \code{vkbeautify} and \code{highlight.js} to format and
 HTML/XML in an \code{htmlwidget} pane.
 }
 \examples{
-xml_view("<html><head><title>Hi</title></head><body>Test</body></html>")
+library(xml2)
+txt <- "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading>
+<body>Don't forget me this weekend!</body></note>"
+xml_view(txt)
+doc <- read_xml(txt)
+xml_view(doc, style="obsidian")
+xml_view(xml_find_all(doc, ".//to"), style="github-gist")
+xml_view(read_xml(system.file("extdata/dwml.xml", package="xmlview")))
+xml_view(read_xml(system.file("extdata/getHistory.xml", package="xmlview")), "androidstudio")
+xml_view(read_xml(system.file("extdata/input.xml", package="xmlview")), "sunburst")
 }
 \references{
 \href{https://highlightjs.org/}{highlight.js},

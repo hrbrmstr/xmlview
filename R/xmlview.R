@@ -7,14 +7,24 @@
 #' @param doc \code{xml2} document, node, nodeset or atomic character vector
 #'        of HTML/XML content
 #' @param style CSS stylesheet to use (see \code{higlight_styles()})
-#' @param width width
-#' @param height height
 #' @export
 #' @references \href{https://highlightjs.org/}{highlight.js},
 #'             \href{http://www.eslinstructor.net/vkbeautify/}{vkbeautify}
 #' @examples
-#' xml_view("<html><head><title>Hi</title></head><body>Test</body></html>")
-xml_view <- function(doc, style="default", width = NULL, height = NULL) {
+# library(xml2)
+# txt <- "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading>
+# <body>Don't forget me this weekend!</body></note>"
+# xml_view(txt)
+# doc <- read_xml(txt)
+# xml_view(doc, style="obsidian")
+# xml_view(xml_find_all(doc, ".//to"), style="github-gist")
+# xml_view(read_xml(system.file("extdata/dwml.xml", package="xmlview")))
+# xml_view(read_xml(system.file("extdata/getHistory.xml", package="xmlview")), "androidstudio")
+# xml_view(read_xml(system.file("extdata/input.xml", package="xmlview")), "sunburst")
+xml_view <- function(doc, style="default") {
+
+  width <- "100%"
+  height <- 300
 
   style <- trimws(tolower(style))
 
@@ -55,6 +65,8 @@ xml_view <- function(doc, style="default", width = NULL, height = NULL) {
 #' @references See \url{https://highlightjs.org/static/demo/} for a demo of all
 #'             highlight.js styles
 #' @export
+#' @examples
+#' highlight_styles()
 highlight_styles <- function() {
   gsub("\\.css$", "",
        grep("\\.css$",

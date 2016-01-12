@@ -10,6 +10,9 @@ highlight_styles()
 Returns a character vector of available style sheets to use when displaying
 an XML document.
 }
+\examples{
+highlight_styles()
+}
 \references{
 See \url{https://highlightjs.org/static/demo/} for a demo of all
             highlight.js styles
