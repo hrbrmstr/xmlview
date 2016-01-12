@@ -7,6 +7,8 @@
 #' @param doc \code{xml2} document, node, nodeset or atomic character vector
 #'        of HTML/XML content
 #' @param style CSS stylesheet to use (see \code{higlight_styles()})
+#' @param add_filter show an XPath input box to enable live filtering?
+#'        (default: \code{FALSE})
 #' @export
 #' @references \href{https://highlightjs.org/}{highlight.js},
 #'             \href{http://www.eslinstructor.net/vkbeautify/}{vkbeautify}
@@ -23,7 +25,7 @@
 #'          "androidstudio")
 #' xml_view(read_xml(system.file("extdata/input.xml", package="xmlview")),
 #'          "sunburst")
-xml_view <- function(doc, style="default") {
+xml_view <- function(doc, style="default", add_filter=FALSE) {
 
   width <- "100%"
   height <- 300
@@ -45,7 +47,8 @@ xml_view <- function(doc, style="default") {
 
   params <- list(
     xmlDoc = doc,
-    styleSheet = style
+    styleSheet = style,
+    addFilter = add_filter
   )
 
   htmlwidgets::createWidget(

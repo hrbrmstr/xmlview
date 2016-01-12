@@ -4,13 +4,16 @@
 \alias{xml_view}
 \title{XML pretty printer & viewer}
 \usage{
-xml_view(doc, style = "default")
+xml_view(doc, style = "default", add_filter = FALSE)
 }
 \arguments{
 \item{doc}{\code{xml2} document, node, nodeset or atomic character vector
 of HTML/XML content}
 
 \item{style}{CSS stylesheet to use (see \code{higlight_styles()})}
+
+\item{add_filter}{show an XPath input box to enable live filtering?
+(default: \code{FALSE})}
 }
 \description{
 This uses \code{vkbeautify} and \code{highlight.js} to format and
