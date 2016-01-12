@@ -57,4 +57,10 @@ xml_view(xml_find_all(doc, ".//to"), style="github-gist")
 xml_view(read_xml(system.file("extdata/dwml.xml", package="xmlview")))
 xml_view(read_xml(system.file("extdata/getHistory.xml", package="xmlview")), "androidstudio")
 xml_view(read_xml(system.file("extdata/input.xml", package="xmlview")), "sunburst")
+
+# SO: http://stackoverflow.com/questions/34664028/extract-xml-data-using-xmlsapply-in-r
+doc <- read_xml("http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml")
+xml_view(xml_find_all(doc, ".//*[contains(@_id, '7')]"), style="monokai_sublime")
 ```
+
+![](example.png)
