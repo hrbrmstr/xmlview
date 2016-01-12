@@ -15,7 +15,7 @@
 #' @examples
 #' library(xml2)
 #' txt <- paste0("<note><to>Tove</to><from>Jani</from><heading>Reminder</heading>",
-#'               "<body>Don't forget me this weekend!</body></note>"
+#'               "<body>Don't forget me this weekend!</body></note>")
 #' xml_view(txt)
 #' doc <- read_xml(txt)
 #' xml_view(doc, style="obsidian")
