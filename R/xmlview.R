@@ -11,16 +11,18 @@
 #' @references \href{https://highlightjs.org/}{highlight.js},
 #'             \href{http://www.eslinstructor.net/vkbeautify/}{vkbeautify}
 #' @examples
-# library(xml2)
-# txt <- "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading>
-# <body>Don't forget me this weekend!</body></note>"
-# xml_view(txt)
-# doc <- read_xml(txt)
-# xml_view(doc, style="obsidian")
-# xml_view(xml_find_all(doc, ".//to"), style="github-gist")
-# xml_view(read_xml(system.file("extdata/dwml.xml", package="xmlview")))
-# xml_view(read_xml(system.file("extdata/getHistory.xml", package="xmlview")), "androidstudio")
-# xml_view(read_xml(system.file("extdata/input.xml", package="xmlview")), "sunburst")
+#' library(xml2)
+#' txt <- paste0("<note><to>Tove</to><from>Jani</from><heading>Reminder</heading>",
+#'               "<body>Don't forget me this weekend!</body></note>"
+#' xml_view(txt)
+#' doc <- read_xml(txt)
+#' xml_view(doc, style="obsidian")
+#' xml_view(xml_find_all(doc, ".//to"), style="github-gist")
+#' xml_view(read_xml(system.file("extdata/dwml.xml", package="xmlview")))
+#' xml_view(read_xml(system.file("extdata/getHistory.xml", package="xmlview")),
+#'          "androidstudio")
+#' xml_view(read_xml(system.file("extdata/input.xml", package="xmlview")),
+#'          "sunburst")
 xml_view <- function(doc, style="default") {
 
   width <- "100%"
