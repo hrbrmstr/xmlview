@@ -1,0 +1,23 @@
+Package: xmlview
+Type: Package
+Title: xFormat and Pretty Print 'HTML'/'XML' Content
+Version: 0.1.0
+Date: 2016-01-12
+Author: Bob Rudis (@hrbrmstr)
+Maintainer: Bob Rudis <bob@rudis.net>
+Description: Provides utilities to view formatted and "pretty printed" HTML/XML
+    content from XML document objects, nodes, node sets and plain character
+    HTML/XML using 'vkbeautify' (by Vadim Kiryukhin) and 'highlight.js'
+    (by Ivan Sagalaev).
+URL: http://github.com/hrbrmstr/xmlview
+BugReports: https://github.com/hrbrmstr/xmlview/issues
+License: MIT + file LICENSE
+Suggests:
+    testthat
+Depends:
+    R (>= 3.0.0)
+Imports:
+    htmlwidgets,
+    htmltools,
+    xml2
+RoxygenNote: 5.0.1
