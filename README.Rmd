@@ -21,7 +21,7 @@ You can pass in:
 
 and view the formatted & pretty-printed result in the RStudio viewer or web browser.
 
-The widget uses  [vkbeautify](http://www.eslinstructor.net/vkbeautify/) and [highlight.js](https://highlightjs.org) to do all the work.
+The widget uses  [vkbeautify](http://www.eslinstructor.net/vkbeautify/), [highlight.js](https://highlightjs.org) and [xml-viewer](https://github.com/juliangruber/xml-viewer) to do all the work.
 
 The following functions are implemented:
 
