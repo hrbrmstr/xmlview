@@ -26,10 +26,17 @@ The widget uses  [vkbeautify](http://www.eslinstructor.net/vkbeautify/) and [hig
 The following functions are implemented:
 
 - `xml_view`: view HTML/XML nodes
+- `xml_tree_view`: view HTML/XML nodes
+
+<hr/>
+
+Please `devtools::install_github("ramnathv/htmlwidgets")` for this as we're now using the more modern (and bleeding edge `htmlwidgets` functionality).
+
+<hr/>
 
 ### News
 
-- Version 0.3.0 : @timelyportfolio added `xml_tree_view()`
+- Version 0.3.0 : @timelyportfolio added `xml_tree_view()` 
 - Version 0.2.2 : added "generate R code" button
 - Version 0.2.1 : support for namespaces
 - Version 0.2.0 : added `add_filter` option to `xml_view()` for live XPath filtering (so you can see the results immediately and then just copy/paste the XPath string back into R)
