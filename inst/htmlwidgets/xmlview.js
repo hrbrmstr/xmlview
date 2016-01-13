@@ -22,15 +22,22 @@ HTMLWidgets.widget({
 
     var msg = "<style>button:active { color: #fff; text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff; box-shadow: 0 1px 0 #666, 0 2px 0 #444, 0 2px 2px rgba(0,0,0,0.9); -webkit-transform: translateY(3px); transform: translateY(3px); -webkit-animation: none; animation: none; }</style><div style='max-width:100%; width:100%; font-family:monospace; display:none; border: 1px solid; margin:0; margin-top:5px; padding:5px; color: #9f6000; background-color: #feefb3;' id='msg'></div>";
 
+    var rcode = "<style>button:active { color: #fff; text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff; box-shadow: 0 1px 0 #666, 0 2px 0 #444, 0 2px 2px rgba(0,0,0,0.9); -webkit-transform: translateY(3px); transform: translateY(3px); -webkit-animation: none; animation: none; }</style><div style='max-width:100%; width:100%; font-family:monospace; display:none; border: 1px solid; margin:0; margin-top:5px; padding:5px; color: #000000; background-color: #ffffff' id='rcode'></div>";
+
     var filter = "";
 
     if (param.addFilter) {
-      filter = "<span style='font-family:monospace; font-weight:bold'>XPath:</span> <input alt=title='Enter XPath to test and hit ENTER/RETURN. Errors will indicate a bad XPath, otherwise the document contents will reflect the outcome of the XPath selection.' title='Enter XPath to test and hit ENTER/RETURN. Errors will indicate a bad XPath, otherwise the document contents will reflect the outcome of the XPath selection.' style='font-family: monospace; outline: none;' type='text' size=69 id='xpath' onchange='filter_xpath();'/> <button alt='Reset XPath & restore original document' title='Reset XPath & restore original document' style='transition: all 150ms ease; vertical-align:bottom; height:30px; width:30px; border: none; outline:0; background-color:#ffffff; background-image: url(lib/vkbeautify-0.99.00/./reset.png); background-repeat: no-repeat;' onclick='reset_form(); return(false);'></button><br/>";
+      filter = "<div style='display: table; width:100%; max-width:100%; height:30px;'>" +
+               "<span style='font-family:monospace; font-weight:bold'>XPath:</span> " +
+               "<input alt=title='Enter XPath to test and hit ENTER/RETURN. Errors will indicate a bad XPath, otherwise the document contents will reflect the outcome of the XPath selection.' title='Enter XPath to test and hit ENTER/RETURN. Errors will indicate a bad XPath, otherwise the document contents will reflect the outcome of the XPath selection.' style='font-family: monospace; outline: none;' type='text' size=69 id='xpath' onchange='filter_xpath();'/> " +
+               "<button alt='Reset XPath & restore original document' title='Reset XPath & restore original document' style='transition: all 150ms ease; display: table-cell;vertical-align: middle; height:26px; width:26px; border: none; outline:0; background-color:#ffffff; background-image: url(lib/vkbeautify-0.99.00/./reset.png); background-repeat: no-repeat;' onclick='reset_form(); return(false);'></button> " +
+               "<button alt='Generate R xml2 code' title='Generate R xml2 code' style='transition: all 150ms ease; vertical-align:bottom; height:26px; width:26px; border: none; outline:0; background-color:#ffffff; background-image: url(lib/vkbeautify-0.99.00/./rlogo.png); background-repeat: no-repeat;' onclick='generate_rcode(); return(false);'></button>" +
+               "<br/>";
     }
 
 // <img alt='Reset' width='20px' src='lib/vkbeautify-0.99.00/./reset.png'/>
 
-    el.innerHTML = filter + msg +
+    el.innerHTML = filter + msg + rcode +
       "<pre><code class='html' id='xmldiv'></code></pre>";
 
     var xml_div = document.getElementById('xmldiv');
@@ -82,6 +89,7 @@ function filter_xpath() {
 
     glob.err = err;
 
+    document.getElementById('rcode').style.display = "none";
     document.getElementById('msg').innerText = "Invalid XPath";
     document.getElementById('msg').style.display = "inline-block";
 
@@ -91,6 +99,7 @@ function filter_xpath() {
 
 function reset_form(doc) {
 
+  document.getElementById('rcode').style.display = "none";
   document.getElementById('msg').style.display = "none";
   document.getElementById('xpath').value = "" ;
 
@@ -99,4 +108,12 @@ function reset_form(doc) {
 
   hljs.highlightBlock(document.getElementById('xmldiv'));
 
+}
+
+function generate_rcode() {
+  document.getElementById('rcode').innerText =
+    "xml2::xml_find_all(doc, '" +
+    document.getElementById('xpath').value +
+    "', ns=xml2::xml_ns(doc))";
+  document.getElementById('rcode').style.display = "inline-block";
 }
