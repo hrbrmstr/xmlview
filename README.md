@@ -22,6 +22,7 @@ The following functions are implemented:
 
 ### News
 
+- Version 0.2.2 : added "generate R code" button
 - Version 0.2.1 : support for namespaces
 - Version 0.2.0 : added `add_filter` option to `xml_view()` for live XPath filtering (so you can see the results immediately and then just copy/paste the XPath string back into R)
 - Version 0.1.0 released
