@@ -81,4 +81,28 @@ doc <- read_xml("http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestauran
 xml_view(xml_find_all(doc, ".//*[contains(@_id, '7')]"), style="monokai_sublime")
 ```
 
+### Screen shot (plain viewer)
+
 ![](example.png)
+
+### Screen recording of filtering
+
+Here is the R code (it's a bit hard to read):
+
+```{r eval=FALSE}
+library(xml2)
+
+doc <- read_xml("http://www.npr.org/rss/rss.php?id=1001")
+
+str(doc)
+
+xml_view(doc, add_filter=TRUE)
+
+# The first copied code:
+xml2::xml_find_all(doc, './/dc:creator', ns=xml2::xml_ns(doc))
+
+# The second copied code:
+xml_text(xml2::xml_find_all(doc, './/link[contains(., "soccer")]', ns=xml2::xml_ns(doc)))
+```
+
+![](xmlview.gif)
