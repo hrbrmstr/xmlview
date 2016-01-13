@@ -20,4 +20,4 @@ Imports:
     htmlwidgets,
     htmltools,
     xml2
-RoxygenNote: 5.0.1
+RoxygenNote: 4.1.1.9001
