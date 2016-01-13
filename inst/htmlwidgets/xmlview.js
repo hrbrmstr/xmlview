@@ -51,15 +51,18 @@ function filter_xpath() {
 
   var xpath = document.getElementById("xpath").value.trim();
 
-  if (xpath == "") return(reset_form());
+  if (xpath === "") return(reset_form());
 
   var out_xml = "" ;
 
   try {
+
+    var nsResolver = glob.parsedOrig.createNSResolver(glob.parsedOrig);
+
     var results =
       glob.parsedOrig.evaluate(xpath,
                        glob.parsedOrig,
-                       null,
+                       nsResolver,
                        XPathResult.UNORDERED_NODE_ITERATOR_TYPE,
                        null);
 
