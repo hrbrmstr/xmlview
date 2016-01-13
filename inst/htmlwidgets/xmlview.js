@@ -35,8 +35,6 @@ HTMLWidgets.widget({
                "<br/>";
     }
 
-// <img alt='Reset' width='20px' src='lib/vkbeautify-0.99.00/./reset.png'/>
-
     el.innerHTML = filter + msg + rcode +
       "<pre><code class='html' id='xmldiv'></code></pre>";
 
