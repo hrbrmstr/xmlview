@@ -127,8 +127,8 @@ function reset_form(doc) {
   $id('xpath').value = "" ;
 
   var xml_div = $id('xmldiv');
-  xml_div.innerText =  vkbeautify.xml(glob.xmlDoc);
-  xml_div.textContent =  vkbeautify.xml(glob.xmlDoc);
+  xml_div.innerText = vkbeautify.xml(glob.xmlDoc);
+  xml_div.textContent = vkbeautify.xml(glob.xmlDoc);
 
   hljs.highlightBlock($id('xmldiv'));
 
