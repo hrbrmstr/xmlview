@@ -1,4 +1,4 @@
-#' Format and Pretty Print 'HTML'/'XML' Content
+#' Format, Pretty Print and Test XPath Queries on 'HTML'/'XML' Content
 #'
 #' This uses \code{vkbeautify} and \code{highlight.js} to format and
 #' "pretty print" HTML/XML documents, nodes, node sets and plain character
@@ -7,5 +7,5 @@
 #' @name xmlview
 #' @docType package
 #' @author Bob Rudis (@@hrbrmstr)
-#' @import htmltools htmlwidgets xml2
+#' @import htmlwidgets htmltools xml2
 NULL

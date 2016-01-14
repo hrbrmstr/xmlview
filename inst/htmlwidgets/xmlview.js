@@ -49,11 +49,19 @@ HTMLWidgets.widget({
       "<pre><code class='html' id='xmldiv'></code></pre>" + log;
 
     var xml_div = $id('xmldiv');
-    xml_div.innerText = vkbeautify.xml(param.xmlDoc);
-    xml_div.textContent = vkbeautify.xml(param.xmlDoc);
 
-    hljs.initHighlighting() ;
-    hljs.highlightBlock($id('xmldiv'));
+    if (glob.applyXPath === null) {
+
+      xml_div.innerText = vkbeautify.xml(param.xmlDoc);
+      xml_div.textContent = vkbeautify.xml(param.xmlDoc);
+
+      hljs.initHighlighting() ;
+      hljs.highlightBlock($id('xmldiv'));
+
+    } else {
+      if (param.addFilter) { $id("xpath").value = glob.applyXPath }
+      do_filter(glob.applyXPath);
+    }
 
   },
 
@@ -65,7 +73,11 @@ function filter_xpath() {
 
   document.getElementById('msg').style.display = "none";
 
-  var xpath = $id("xpath").value.trim();
+  do_filter($id("xpath").value.trim());
+
+}
+
+function do_filter(xpath) {
 
   if (xpath === "") return(reset_form());
 

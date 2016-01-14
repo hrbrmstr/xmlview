@@ -1,9 +1,22 @@
 Package: xmlview
 Type: Package
 Title: View, Query, Format, and "Pretty Print" 'HTML'/'XML' Content
-Version: 0.3.3
+Version: 0.4.0
 Date: 2016-01-14
-Author: Bob Rudis (@hrbrmstr)
+Authors@R: c(
+      person("Bob", "Rudis", role = c("aut", "cre"),
+             comment = "R iterface",
+             email = "bob@rudis.net"),
+      person("Kenton","Russell", role = c("aut", "ctb"),
+             comment = "xml-viewer integration",
+             email = "kent.russell@timelyportfolio.com"),
+      person("Vadim", "Kiryukhin", role = c("ctb", "cph"),
+             comment = "vkbeautify library"),
+      person("Ivan", "Sagalaev", role = c("ctb", "cph"),
+             comment = "highlight.js library"),
+      person("Julian", "Gruber", role = c("ctb", "cph"),
+             comment = "xml-viewer library")
+    )
 Maintainer: Bob Rudis <bob@rudis.net>
 Description: Provides utilities to view formatted and "pretty printed" HTML/XML
     content from XML document objects, nodes, node sets and plain character HTML/XML

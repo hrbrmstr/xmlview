@@ -4,7 +4,7 @@
 \name{xmlview}
 \alias{xmlview}
 \alias{xmlview-package}
-\title{Format and Pretty Print 'HTML'/'XML' Content}
+\title{Format, Pretty Print and Test XPath Queries on 'HTML'/'XML' Content}
 \description{
 This uses \code{vkbeautify} and \code{highlight.js} to format and
 "pretty print" HTML/XML documents, nodes, node sets and plain character

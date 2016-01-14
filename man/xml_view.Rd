@@ -4,7 +4,8 @@
 \alias{xml_view}
 \title{XML pretty printer & viewer}
 \usage{
-xml_view(doc, style = "default", add_filter = FALSE)
+xml_view(doc, style = "default", add_filter = FALSE, apply_xpath = NULL,
+  elementId = NULL, width = "100\%", height = NULL)
 }
 \arguments{
 \item{doc}{\code{xml2} document, node, nodeset or atomic character vector
@@ -14,6 +15,17 @@ of HTML/XML content}
 
 \item{add_filter}{show an XPath input box to enable live filtering?
 (default: \code{FALSE})}
+
+\item{apply_xpath}{Add and apply an XPath query string to the view. If
+\code{add_filter} is \code{TRUE} then this query string will
+appear in the filter box and be applied to the passed in document.}
+
+\item{elementId}{element id}
+
+\item{width}{widget width (best to keep it at 100\%)}
+
+\item{height}{widget height (kinda only useful for knitting since this is
+meant to be an interactive tool).}
 }
 \description{
 This uses \code{vkbeautify} and \code{highlight.js} to format and
@@ -22,17 +34,29 @@ HTML/XML in an \code{htmlwidget} pane.
 }
 \examples{
 library(xml2)
+
+# plain text
 txt <- paste0("<note><to>Tove</to><from>Jani</from><heading>Reminder</heading>",
               "<body>Don't forget me this weekend!</body></note>")
 xml_view(txt)
+
+# xml object
 doc <- read_xml(txt)
 xml_view(doc, style="obsidian")
+
+# different style
 xml_view(xml_find_all(doc, ".//to"), style="github-gist")
+
+# some more complex daata
 xml_view(read_xml(system.file("extdata/dwml.xml", package="xmlview")))
 xml_view(read_xml(system.file("extdata/getHistory.xml", package="xmlview")),
          "androidstudio")
 xml_view(read_xml(system.file("extdata/input.xml", package="xmlview")),
          "sunburst")
+
+# filter + apply an initial XPath query string
+xml_view(read_xml(system.file("extdata/dwml.xml", package="xmlview")),
+         add_filter=TRUE, apply_xpath=".//temperature")
 }
 \references{
 \href{https://highlightjs.org/}{highlight.js},

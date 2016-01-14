@@ -4,13 +4,14 @@
 #' tree viewer for HTML/XML documents, nodes, node sets and plain character
 #' HTML/XML in an \code{htmlwidget} pane.
 #'
-#' @example inst/examples/examples-xml_tree_view.R
-#'
-#' @import htmlwidgets
-#'
+#' @param doc \code{xml2} document, node, nodeset or atomic character vector
+#'        of HTML/XML content
+#' @param width widget \code{div} width
+#' @param height widget \code{div} height
+#' @param elementId element id
 #' @export
 #' @references \href{https://github.com/juliangruber/xml-viewer}{xml-viewer}
-
+#' @example inst/examples/examples-xml_tree_view.R
 xml_tree_view <- function(
   doc = NULL,
   width = "100%", height = NULL,
@@ -38,32 +39,4 @@ xml_tree_view <- function(
     package = 'xmlview',
     elementId = elementId
   )
-}
-
-#' Shiny bindings for xmltreeview
-#'
-#' Output and render functions for using xmltreeview within Shiny
-#' applications and interactive Rmd documents.
-#'
-#' @param outputId output variable to read from
-#' @param width,height Must be a valid CSS unit (like \\code{'100\%'},
-#'   \\code{'400px'}, \\code{'auto'}) or a number, which will be coerced to a
-#'   string and have \\code{'px'} appended.
-#' @param expr An expression that generates a xmltreeview
-#' @param env The environment in which to evaluate \\code{expr}.
-#' @param quoted Is \\code{expr} a quoted expression (with \\code{quote()})? This
-#'   is useful if you want to save an expression in a variable.
-#'
-#' @name xmltreeview-shiny
-#'
-#' @export
-xmltreeviewOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'xmltreeview', width, height, package = 'xmlview')
-}
-
-#' @rdname xmltreeview-shiny
-#' @export
-renderXmltreeview <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, xmltreeviewOutput, env, quoted = TRUE)
 }

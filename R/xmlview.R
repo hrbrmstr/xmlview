@@ -9,26 +9,44 @@
 #' @param style CSS stylesheet to use (see \code{higlight_styles()})
 #' @param add_filter show an XPath input box to enable live filtering?
 #'        (default: \code{FALSE})
+#' @param apply_xpath Add and apply an XPath query string to the view. If
+#'        \code{add_filter} is \code{TRUE} then this query string will
+#'        appear in the filter box and be applied to the passed in document.
+#' @param elementId element id
+#' @param width widget width (best to keep it at 100\%)
+#' @param height widget height (kinda only useful for knitting since this is
+#'        meant to be an interactive tool).
 #' @export
 #' @references \href{https://highlightjs.org/}{highlight.js},
 #'             \href{http://www.eslinstructor.net/vkbeautify/}{vkbeautify}
 #' @examples
 #' library(xml2)
+#'
+#' # plain text
 #' txt <- paste0("<note><to>Tove</to><from>Jani</from><heading>Reminder</heading>",
 #'               "<body>Don't forget me this weekend!</body></note>")
 #' xml_view(txt)
+#'
+#' # xml object
 #' doc <- read_xml(txt)
 #' xml_view(doc, style="obsidian")
+#'
+#' # different style
 #' xml_view(xml_find_all(doc, ".//to"), style="github-gist")
+#'
+#' # some more complex daata
 #' xml_view(read_xml(system.file("extdata/dwml.xml", package="xmlview")))
 #' xml_view(read_xml(system.file("extdata/getHistory.xml", package="xmlview")),
 #'          "androidstudio")
 #' xml_view(read_xml(system.file("extdata/input.xml", package="xmlview")),
 #'          "sunburst")
-xml_view <- function(doc, style="default", add_filter=FALSE) {
-
-  width <- "100%"
-  height <- 300
+#'
+#' # filter + apply an initial XPath query string
+#' xml_view(read_xml(system.file("extdata/dwml.xml", package="xmlview")),
+#'          add_filter=TRUE, apply_xpath=".//temperature")
+xml_view <- function(doc, style="default", add_filter=FALSE,
+                     apply_xpath=NULL, elementId=NULL,
+                     width="100%", height=NULL) {
 
   style <- trimws(tolower(style))
 
@@ -48,7 +66,8 @@ xml_view <- function(doc, style="default", add_filter=FALSE) {
   params <- list(
     xmlDoc = doc,
     styleSheet = style,
-    addFilter = add_filter
+    addFilter = add_filter,
+    applyXPath = apply_xpath
   )
 
   htmlwidgets::createWidget(
@@ -56,7 +75,8 @@ xml_view <- function(doc, style="default", add_filter=FALSE) {
     params,
     width = width,
     height = height,
-    package = 'xmlview'
+    package = 'xmlview',
+    elementId = elementId,
   )
 
 }

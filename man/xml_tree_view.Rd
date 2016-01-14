@@ -7,6 +7,16 @@
 xml_tree_view(doc = NULL, width = "100\%", height = NULL,
   elementId = NULL)
 }
+\arguments{
+\item{doc}{\code{xml2} document, node, nodeset or atomic character vector
+of HTML/XML content}
+
+\item{width}{widget \code{div} width}
+
+\item{height}{widget \code{div} height}
+
+\item{elementId}{element id}
+}
 \description{
 This uses \code{xml-viewer} to provide a simple collapsible
 tree viewer for HTML/XML documents, nodes, node sets and plain character

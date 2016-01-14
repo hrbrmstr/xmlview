@@ -2,6 +2,6 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^README\.*md$
-^README\.*md$
 ^example\.png$
 ^xmlview\.gif$
+^README\.html$
