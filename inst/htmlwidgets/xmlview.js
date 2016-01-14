@@ -45,6 +45,7 @@ HTMLWidgets.widget({
 
     var xml_div = document.getElementById('xmldiv');
     xml_div.innerText = vkbeautify.xml(param.xmlDoc);
+    xml_div.textContent = vkbeautify.xml(param.xmlDoc);
 
     hljs.initHighlighting() ;
     hljs.highlightBlock(document.getElementById('xmldiv'));
@@ -85,6 +86,7 @@ function filter_xpath() {
 
     var xml_div = document.getElementById('xmldiv');
     xml_div.innerText = vkbeautify.xml(out_xml);
+    xml_div.textContent = vkbeautify.xml(out_xml);
 
     hljs.highlightBlock(document.getElementById('xmldiv'));
 
@@ -108,6 +110,7 @@ function reset_form(doc) {
 
   var xml_div = document.getElementById('xmldiv');
   xml_div.innerText =  vkbeautify.xml(glob.xmlDoc);
+  xml_div.textContent =  vkbeautify.xml(glob.xmlDoc);
 
   hljs.highlightBlock(document.getElementById('xmldiv'));
 
