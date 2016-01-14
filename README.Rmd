@@ -36,6 +36,7 @@ Please `devtools::install_github("ramnathv/htmlwidgets")` for this as we're now 
 
 ### News
 
+- Version 0.3.3 : Code cleanup
 - Version 0.3.2 : Works with Firefox now 
 - Version 0.3.1 : Fixed a bug that was causing `xml_view` to not work on Linux RStudio Desktop 
 - Version 0.3.0 : @timelyportfolio added `xml_tree_view()` 

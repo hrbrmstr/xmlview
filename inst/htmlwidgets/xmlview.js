@@ -1,3 +1,8 @@
+// shortcuts (kinda of the only reason I use jQuery anyway)
+function $id(element) { return(document.getElementById(element)); }
+function $tag(tag) { return(document.getElementsByTagName(tag)); }
+function $log(thing) { $id('hrbrlog').value += thing + '\n'; $id('hrbrlog').style.display = "inline-block"; }
+
 HTMLWidgets.widget({
 
   name: 'xmlview',
@@ -21,13 +26,13 @@ HTMLWidgets.widget({
     link.rel   = "stylesheet";
     link.media = "screen,print";
 
-    document.getElementsByTagName("head")[0].appendChild(link);
+    $tag("head")[0].appendChild(link);
 
     var msg = "<div class='msgdiv' id='msg'></div>";
 
     var rcode = "<div class='rcodediv' id='rcode'></div>";
 
-    var log = "<div id='logdiv'><textarea style='display:none;font-family:monospace' cols=80 rows=40 id='log'></textarea></div>";
+    var log = "<div id='logdiv'><textarea style='display:none;font-family:monospace' cols=80 rows=40 id='hrbrlog'></textarea></div>";
 
     var filter = "";
 
@@ -43,12 +48,12 @@ HTMLWidgets.widget({
     el.innerHTML = filter + msg + rcode +
       "<pre><code class='html' id='xmldiv'></code></pre>" + log;
 
-    var xml_div = document.getElementById('xmldiv');
+    var xml_div = $id('xmldiv');
     xml_div.innerText = vkbeautify.xml(param.xmlDoc);
     xml_div.textContent = vkbeautify.xml(param.xmlDoc);
 
     hljs.initHighlighting() ;
-    hljs.highlightBlock(document.getElementById('xmldiv'));
+    hljs.highlightBlock($id('xmldiv'));
 
   },
 
@@ -60,7 +65,7 @@ function filter_xpath() {
 
   document.getElementById('msg').style.display = "none";
 
-  var xpath = document.getElementById("xpath").value.trim();
+  var xpath = $id("xpath").value.trim();
 
   if (xpath === "") return(reset_form());
 
@@ -84,19 +89,19 @@ function filter_xpath() {
       res = results.iterateNext();
     }
 
-    var xml_div = document.getElementById('xmldiv');
+    var xml_div = $id('xmldiv');
     xml_div.innerText = vkbeautify.xml(out_xml);
     xml_div.textContent = vkbeautify.xml(out_xml);
 
-    hljs.highlightBlock(document.getElementById('xmldiv'));
+    hljs.highlightBlock($id('xmldiv'));
 
   } catch(err) {
 
     glob.err = err;
 
-    document.getElementById('rcode').style.display = "none";
-    document.getElementById('msg').innerText = "Invalid XPath";
-    document.getElementById('msg').style.display = "inline-block";
+    $id('rcode').style.display = "none";
+    $id('msg').innerText = "Invalid XPath";
+    $id('msg').style.display = "inline-block";
 
   }
 
@@ -104,22 +109,19 @@ function filter_xpath() {
 
 function reset_form(doc) {
 
-  document.getElementById('rcode').style.display = "none";
-  document.getElementById('msg').style.display = "none";
-  document.getElementById('xpath').value = "" ;
+  $id('rcode').style.display = "none";
+  $id('msg').style.display = "none";
+  $id('xpath').value = "" ;
 
-  var xml_div = document.getElementById('xmldiv');
+  var xml_div = $id('xmldiv');
   xml_div.innerText =  vkbeautify.xml(glob.xmlDoc);
   xml_div.textContent =  vkbeautify.xml(glob.xmlDoc);
 
-  hljs.highlightBlock(document.getElementById('xmldiv'));
+  hljs.highlightBlock($id('xmldiv'));
 
 }
 
 function generate_rcode() {
-  document.getElementById('rcode').innerText =
-    "xml2::xml_find_all(doc, '" +
-    document.getElementById('xpath').value +
-    "', ns=xml2::xml_ns(doc))";
-  document.getElementById('rcode').style.display = "inline-block";
+  $id('rcode').innerText = "xml2::xml_find_all(doc, '" + $id('xpath').value + "', ns=xml2::xml_ns(doc))";
+  $id('rcode').style.display = "inline-block";
 }
