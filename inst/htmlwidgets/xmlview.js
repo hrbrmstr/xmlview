@@ -112,6 +112,7 @@ function do_filter(xpath) {
     glob.err = err;
 
     $id('rcode').style.display = "none";
+
     $id('msg').innerText = "Invalid XPath";
     $id('msg').textContent = "Invalid XPath";
     $id('msg').style.display = "inline-block";
