@@ -113,6 +113,7 @@ function do_filter(xpath) {
 
     $id('rcode').style.display = "none";
     $id('msg').innerText = "Invalid XPath";
+    $id('msg').textContent = "Invalid XPath";
     $id('msg').style.display = "inline-block";
 
   }
@@ -135,5 +136,6 @@ function reset_form(doc) {
 
 function generate_rcode() {
   $id('rcode').innerText = "xml2::xml_find_all(doc, '" + $id('xpath').value + "', ns=xml2::xml_ns(doc))";
+  $id('rcode').textContent = "xml2::xml_find_all(doc, '" + $id('xpath').value + "', ns=xml2::xml_ns(doc))";
   $id('rcode').style.display = "inline-block";
 }
