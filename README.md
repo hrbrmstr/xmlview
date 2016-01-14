@@ -29,6 +29,7 @@ Please `devtools::install_github("ramnathv/htmlwidgets")` for this as we're now 
 
 ### News
 
+- Version 0.3.1 : Fixed a bug that was causing `xml_view` to not work on Linux RStudio Desktop 
 - Version 0.3.0 : @timelyportfolio added `xml_tree_view()` 
 - Version 0.2.2 : added "generate R code" button
 - Version 0.2.1 : support for namespaces

@@ -3,11 +3,14 @@ HTMLWidgets.widget({
   name: 'xmlview',
   type: 'output',
 
-  initialize: function(el, width, height) { return {}; },
+  initialize: function(el, width, height) {
+    return {};
+  },
 
   renderValue: function(el, param, instance) {
 
     glob = param;
+    glob.serialize = new XMLSerializer();
     glob.orig = glob.xmlDoc;
     glob.parser = new DOMParser();
     glob.parsedOrig = glob.parser.parseFromString(glob.xmlDoc, "text/xml");
@@ -24,6 +27,8 @@ HTMLWidgets.widget({
 
     var rcode = "<div class='rcodediv' id='rcode'></div>";
 
+    var log = "<div id='logdiv'><textarea style='display:none;font-family:monospace' cols=80 rows=40 id='log'></textarea></div>";
+
     var filter = "";
 
     if (param.addFilter) {
@@ -36,7 +41,7 @@ HTMLWidgets.widget({
     }
 
     el.innerHTML = filter + msg + rcode +
-      "<pre><code class='html' id='xmldiv'></code></pre>";
+      "<pre><code class='html' id='xmldiv'></code></pre>" + log;
 
     var xml_div = document.getElementById('xmldiv');
     xml_div.innerText = vkbeautify.xml(param.xmlDoc);
@@ -74,7 +79,7 @@ function filter_xpath() {
     var res = results.iterateNext() ;
 
     while(res) {
-      out_xml = out_xml + res.outerHTML;
+      out_xml = out_xml + glob.serialize.serializeToString(res);
       res = results.iterateNext();
     }
 
