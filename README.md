@@ -29,6 +29,7 @@ Please `devtools::install_github("ramnathv/htmlwidgets")` for this as we're now 
 
 ### News
 
+- Version 0.4.5 : Consistent `scroll` parameter and refactored `xml_view()` (enables multiple "xml views" per Rmd and prbly Shiny toos)
 - Version 0.4.1 : Fixed bug in R-code generation for firefox & linux RStudio Desktop viewer
 - Version 0.4.0 : Enable passing in an initial XPath query string
 - Version 0.3.3 : Code cleanup
