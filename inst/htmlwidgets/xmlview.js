@@ -1,4 +1,4 @@
-// shortcuts (kinda of the only reason I use jQuery anyway)
+// shortcuts (kinda the only reason I use jQuery anyway)
 function $id(element) { return(document.getElementById(element)); }
 function $tag(tag) { return(document.getElementsByTagName(tag)); }
 function $qs(css) { return(document.querySelector(css)) }

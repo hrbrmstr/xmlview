@@ -16,8 +16,6 @@ HTMLWidgets.widget({
         //empty el in case of dynamic/Shiny
         el.innerHTML = "";
 
-        console.log(el.id);
-
         //add CSS overflow scroll to el
         if (param.scroll) { el.style.overflow = "scroll" }
 
