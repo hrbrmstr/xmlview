@@ -24,6 +24,8 @@ HTMLWidgets.widget({
 
     function do_filter(xpath) {
 
+      self.rcode.style.display = "none";
+
       if (xpath === "") return(reset_form());
 
       var out_xml = "" ;
@@ -53,8 +55,6 @@ HTMLWidgets.widget({
         hljs.highlightBlock(self.xml_div);
 
       } catch(err) {
-
-        self.rcode.style.display = "none";
 
         self.msg.innerText = "Invalid XPath";
         self.msg.textContent = "Invalid XPath";
