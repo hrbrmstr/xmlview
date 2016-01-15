@@ -2,15 +2,14 @@
 function $id(element) { return(document.getElementById(element)); }
 function $tag(tag) { return(document.getElementsByTagName(tag)); }
 function $log(thing) { $id('hrbrlog').value += thing + '\n'; $id('hrbrlog').style.display = "inline-block"; }
+function $qs(css) { return(document.querySelector(css)) }
 
 HTMLWidgets.widget({
 
   name: 'xmlview',
   type: 'output',
 
-  initialize: function(el, width, height) {
-    return {};
-  },
+  initialize: function(el, width, height) { return {} },
 
   renderValue: function(el, param, instance) {
 
@@ -27,6 +26,8 @@ HTMLWidgets.widget({
     link.media = "screen,print";
 
     $tag("head")[0].appendChild(link);
+
+    if (param.scroll) { el.style.overflow = "scroll" }
 
     var msg = "<div class='msgdiv' id='msg'></div>";
 

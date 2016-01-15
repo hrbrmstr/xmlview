@@ -4,14 +4,20 @@
 \alias{xml_view}
 \title{XML pretty printer & viewer}
 \usage{
-xml_view(doc, style = "default", add_filter = FALSE, apply_xpath = NULL,
-  elementId = NULL, width = "100\%", height = NULL)
+xml_view(doc, style = "default", scroll = FALSE, add_filter = FALSE,
+  apply_xpath = NULL, elementId = NULL, width = "100\%", height = NULL)
 }
 \arguments{
 \item{doc}{\code{xml2} document, node, nodeset or atomic character vector
 of HTML/XML content}
 
 \item{style}{CSS stylesheet to use (see \code{higlight_styles()})}
+
+\item{scroll}{should the \code{<div>} holding the HTML/XML content scroll
+(\code{TRUE}) or take up the full viewer/browser window (\code{FALSE}).
+Default is \code{FALSE} (take up the full viewer/browser window). If
+this is set to \code{TRUE}, \code{height} should be set to a value
+other than \code{NULL}.}
 
 \item{add_filter}{show an XPath input box to enable live filtering?
 (default: \code{FALSE})}

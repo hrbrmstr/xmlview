@@ -4,18 +4,24 @@
 \alias{xml_tree_view}
 \title{XML tree viewer}
 \usage{
-xml_tree_view(doc = NULL, width = "100\%", height = NULL,
-  elementId = NULL)
+xml_tree_view(doc = NULL, scroll = FALSE, elementId = NULL,
+  width = "100\%", height = NULL)
 }
 \arguments{
 \item{doc}{\code{xml2} document, node, nodeset or atomic character vector
 of HTML/XML content}
 
+\item{scroll}{should the \code{<div>} holding the HTML/XML content scroll
+(\code{TRUE}) or take up the full viewer/browser window (\code{FALSE}).
+Default is \code{FALSE} (take up the full viewer/browser window). If
+this is set to \code{TRUE}, \code{height} should be set to a value
+other than \code{NULL}.}
+
+\item{elementId}{element id}
+
 \item{width}{widget \code{div} width}
 
 \item{height}{widget \code{div} height}
-
-\item{elementId}{element id}
 }
 \description{
 This uses \code{xml-viewer} to provide a simple collapsible

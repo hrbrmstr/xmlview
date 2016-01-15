@@ -6,17 +6,19 @@
 #'
 #' @param doc \code{xml2} document, node, nodeset or atomic character vector
 #'        of HTML/XML content
+#' @param scroll should the \code{<div>} holding the HTML/XML content scroll
+#'        (\code{TRUE}) or take up the full viewer/browser window (\code{FALSE}).
+#'        Default is \code{FALSE} (take up the full viewer/browser window). If
+#'        this is set to \code{TRUE}, \code{height} should be set to a value
+#'        other than \code{NULL}.
+#' @param elementId element id
 #' @param width widget \code{div} width
 #' @param height widget \code{div} height
-#' @param elementId element id
 #' @export
 #' @references \href{https://github.com/juliangruber/xml-viewer}{xml-viewer}
 #' @example inst/examples/examples-xml_tree_view.R
-xml_tree_view <- function(
-  doc = NULL,
-  width = "100%", height = NULL,
-  elementId = NULL
-) {
+xml_tree_view <- function(doc=NULL, scroll=FALSE,
+                          elementId=NULL, width="100%", height=NULL) {
 
   if (inherits(doc, "character")) {
     doc <- paste0(doc, collapse="")
@@ -27,7 +29,8 @@ xml_tree_view <- function(
   }
 
   params <- list(
-    xmlDoc = doc
+    xmlDoc = doc,
+    scroll = scroll
   )
 
   # create widget
@@ -39,4 +42,5 @@ xml_tree_view <- function(
     package = 'xmlview',
     elementId = elementId
   )
+
 }

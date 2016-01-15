@@ -7,6 +7,11 @@
 #' @param doc \code{xml2} document, node, nodeset or atomic character vector
 #'        of HTML/XML content
 #' @param style CSS stylesheet to use (see \code{higlight_styles()})
+#' @param scroll should the \code{<div>} holding the HTML/XML content scroll
+#'        (\code{TRUE}) or take up the full viewer/browser window (\code{FALSE}).
+#'        Default is \code{FALSE} (take up the full viewer/browser window). If
+#'        this is set to \code{TRUE}, \code{height} should be set to a value
+#'        other than \code{NULL}.
 #' @param add_filter show an XPath input box to enable live filtering?
 #'        (default: \code{FALSE})
 #' @param apply_xpath Add and apply an XPath query string to the view. If
@@ -44,7 +49,7 @@
 #' # filter + apply an initial XPath query string
 #' xml_view(read_xml(system.file("extdata/dwml.xml", package="xmlview")),
 #'          add_filter=TRUE, apply_xpath=".//temperature")
-xml_view <- function(doc, style="default", add_filter=FALSE,
+xml_view <- function(doc, style="default", scroll=FALSE, add_filter=FALSE,
                      apply_xpath=NULL, elementId=NULL,
                      width="100%", height=NULL) {
 
@@ -67,7 +72,8 @@ xml_view <- function(doc, style="default", add_filter=FALSE,
     xmlDoc = doc,
     styleSheet = style,
     addFilter = add_filter,
-    applyXPath = apply_xpath
+    applyXPath = apply_xpath,
+    scroll=scroll
   )
 
   htmlwidgets::createWidget(
@@ -76,7 +82,7 @@ xml_view <- function(doc, style="default", add_filter=FALSE,
     width = width,
     height = height,
     package = 'xmlview',
-    elementId = elementId,
+    elementId = elementId
   )
 
 }
