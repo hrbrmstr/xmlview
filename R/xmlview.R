@@ -53,6 +53,13 @@ xml_view <- function(doc, style="default", scroll=FALSE, add_filter=FALSE,
                      apply_xpath=NULL, elementId=NULL,
                      width="100%", height=NULL) {
 
+  xml_doc_name <- "doc"
+
+  if (!inherits(doc, "character") &
+      inherits(substitute(doc), "name")) {
+    xml_doc_name <- deparse(substitute(doc))
+  }
+
   style <- trimws(tolower(style))
 
   if (!style %in% highlight_styles()) {
@@ -73,7 +80,8 @@ xml_view <- function(doc, style="default", scroll=FALSE, add_filter=FALSE,
     styleSheet = style,
     addFilter = add_filter,
     applyXPath = apply_xpath,
-    scroll=scroll
+    scroll=scroll,
+    xmlDocName=xml_doc_name
   )
 
   htmlwidgets::createWidget(

@@ -81,10 +81,14 @@ HTMLWidgets.widget({
 
     function generate_rcode() {
 
-      self.rcode.innerText = "xml2::xml_find_all(doc, '" +
-                               self.xpath.value + "', ns=xml2::xml_ns(doc))";
-      self.rcode.textContent = "xml2::xml_find_all(doc, '" +
-                                 self.xpath.value + "', ns=xml2::xml_ns(doc))";
+      self.rcode.innerText = "xml2::xml_find_all(" +
+                              self.glob.xmlDocName + ", '" +
+                              self.xpath.value + "', ns=xml2::xml_ns(" +
+                              self.glob.xmlDocName + "))";
+      self.rcode.textContent = "xml2::xml_find_all(" +
+                               self.glob.xmlDocName + ", '" +
+                               self.xpath.value + "', ns=xml2::xml_ns(" +
+                               self.glob.xmlDocName + "))";
       self.rcode.style.display = "inline-block";
 
       return(false);
@@ -94,6 +98,7 @@ HTMLWidgets.widget({
     var serializer = new XMLSerializer();
     var domparser =  new DOMParser();
 
+    self.glob.xmlDocName = param.xmlDocName;
     self.glob.xmlDoc     = param.xmlDoc;
     self.glob.applyXPath = param.applyXPath;
     self.glob.orig       = param.xmlDoc;
