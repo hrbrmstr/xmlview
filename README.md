@@ -29,6 +29,7 @@ Please `devtools::install_github("ramnathv/htmlwidgets")` for this as we're now 
 
 ### News
 
+- Version 0.4.7 : Pointer cursor for `xml_tree_view()`
 - Version 0.4.6 : Barebones support for substituting the actual `doc` variable in the generated R code with the passed-in variable name (only really valid for passing in a varialbe that holds an `xml_document`)
 - Version 0.4.5 : Consistent `scroll` parameter and refactored `xml_view()` (enables multiple "xml views" per Rmd and prbly Shiny toos)
 - Version 0.4.1 : Fixed bug in R-code generation for firefox & linux RStudio Desktop viewer
