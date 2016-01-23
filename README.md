@@ -1,6 +1,8 @@
 
 `xmlview` : View formatted and "pretty printed" HTML/XML in R
 
+(if you need JSON, \code{list} or general object viewing in R check out `xmlview`'s sister package, [jsonview](https://github.com/hrbrmstr/xmlview))
+
 It is intended for interactive use. When working with XML data, it's often times
 advantageous to be able to see the document and possibly even more advantageous to
 see the results of XPath or CSS selector slicing & dicing. 
